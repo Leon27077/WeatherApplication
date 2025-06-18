@@ -6,7 +6,7 @@
   <ul id="cityResultsList">
     @for (dataSet of data; track dataSet){
       <li id="cityResult">
-        <a [routerLink]="['/cityWeather']" routerLinkActive="active">
+        <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); weatherService.loadWeatherData()" >
           <p id="city">{{dataSet.name}}</p>
           <p id="desc">{{dataSet.state}}, {{dataSet.country}}</p>
         </a>

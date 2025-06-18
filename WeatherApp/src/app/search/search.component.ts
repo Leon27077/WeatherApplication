@@ -18,8 +18,6 @@ export class SearchComponent {
 
   searchValue: any;
   data: any[] = [];
-  latitude: any;
-  longitude: any;
   showResults: boolean = false;
 
   constructor(protected weatherService: WeatherService) {
@@ -33,5 +31,15 @@ export class SearchComponent {
         console.log(this.data);
       }
     })
+  }
+
+  setLat(idx:number){
+    let latitude = this.data[idx].lat;
+    sessionStorage.setItem("lat", String(latitude));
+  }
+
+  setLon(idx:number){
+    let longitude = this.data[idx].lat;
+    sessionStorage.setItem("lon", String(longitude));
   }
 }
