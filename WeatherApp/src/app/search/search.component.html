@@ -1,0 +1,18 @@
+<input [(ngModel)]="searchValue" #newInput id="cityInput" placeholder="Search for a city">
+
+<button id="searchCityButton" (click)="search(newInput.value);">search</button>
+
+@if (showResults){
+  <ul id="cityResultsList">
+    @for (dataSet of data; track dataSet){
+      <li id="cityResult">
+        <a [routerLink]="['/cityWeather']" routerLinkActive="active">
+          <p id="city">{{dataSet.name}}</p>
+          <p id="desc">{{dataSet.state}}, {{dataSet.country}}</p>
+        </a>
+      </li>
+    }
+  </ul>
+}
+
+<router-outlet></router-outlet>
