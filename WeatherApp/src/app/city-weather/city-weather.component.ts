@@ -31,6 +31,8 @@ export class CityWeatherComponent implements OnInit{
   protected fourth_day: any[] = [];
   protected fifth_day: any[] = [];
 
+  protected forecast_num: number = 0;
+
 
   constructor(protected weatherService: WeatherService, private route: ActivatedRoute) {
   }
@@ -67,6 +69,7 @@ export class CityWeatherComponent implements OnInit{
           console.log(data);
         }
       });
+      this.forecast_num = 0;
     this.weatherService.getForecastByCoordinates(lat, lon).subscribe({
       next: (data: any) => {
         for (let item of data.list){
@@ -148,6 +151,24 @@ export class CityWeatherComponent implements OnInit{
     return this.calculateTime(this.sunset, this.timezone).split(',')[1];
   }
 
+  getForecastByNumber(num:number){
+    switch (num){
+      case 0: return this.current_day;
+      case 1: return this.first_day;
+      case 2: return this.second_day;
+      case 3: return this.third_day;
+      case 4: return this.fourth_day;
+      case 5: return this.fifth_day;
+    }
+    return null;
+  }
 
+  increaseCounter(){
+    this.forecast_num += 1;
+  }
+
+  decreaseCounter(){
+    this.forecast_num -= 1;
+  }
 
 }

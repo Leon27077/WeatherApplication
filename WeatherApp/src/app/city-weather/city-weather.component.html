@@ -8,3 +8,12 @@
 <p>sunrise: {{this.getSunrise()}}</p>
 <p>sunset: {{this.getSunset()}}</p>
 <p>wind speed: {{this.wind_speed}}</p>
+
+<p>----forecast-----</p>
+
+@for (elem of getForecastByNumber(this.forecast_num); track elem){
+  <p>{{elem[0]}} - {{elem[1]}} - {{elem[2]}}°C</p>
+
+}
+<button (click)="increaseCounter()">forward</button>
+<button (click)="decreaseCounter()">backward</button>
