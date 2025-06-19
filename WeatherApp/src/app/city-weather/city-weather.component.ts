@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CityWeatherComponent implements OnInit{
 
+  protected city_name: any;
+  protected country: any;
   protected dt: any;
   protected feels_like: any;
   protected humidity: any;
@@ -36,6 +38,8 @@ export class CityWeatherComponent implements OnInit{
 
       this.weatherService.getWeatherByCoordinates(lat, lon).subscribe({
         next: (data: any) => {
+          this.city_name = data.name;
+          this.country = data.sys.country;
           this.dt = data.dt;
           this.feels_like = data.main.feels_like;
           this.humidity = data.main.humidity;
@@ -55,7 +59,7 @@ export class CityWeatherComponent implements OnInit{
   private calculateTime(dt: any, timezone: any){
     const utcDate = new Date(dt*1000);
     const localOffset = utcDate.getTimezoneOffset() * 60;
-    const finalDate = new Date((this.dt + timezone + localOffset)*1000);
+    const finalDate = new Date((dt + timezone + localOffset)*1000);
     return finalDate.toLocaleString();
 
   }
@@ -63,6 +67,23 @@ export class CityWeatherComponent implements OnInit{
   getDt(){
     return this.calculateTime(this.dt, this.timezone).split(',')[1];
   }
+
+  getTemp(){
+    return Math.round(this.temp -273.15);
+  }
+
+  getFeelsLike(){
+    return Math.round(this.feels_like -273.15);
+  }
+
+  getSunrise(){
+    return this.calculateTime(this.sunrise, this.timezone).split(',')[1];
+  }
+
+  getSunset(){
+    return this.calculateTime(this.sunset, this.timezone).split(',')[1];
+  }
+
 
 
 }
