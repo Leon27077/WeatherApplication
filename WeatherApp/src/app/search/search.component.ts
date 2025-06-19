@@ -16,9 +16,9 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 })
 export class SearchComponent {
 
-  searchValue: any;
+  search_value: any;
   data: any[] = [];
-  showResults: boolean = false;
+  show_results: boolean = false;
 
   constructor(protected weatherService: WeatherService) {
   }
@@ -27,7 +27,7 @@ export class SearchComponent {
     this.weatherService.getInfo(city).subscribe({
       next: (data) => {
         this.data = data;
-        this.showResults = true;
+        this.show_results = true;
         console.log(this.data);
       }
     })
@@ -39,7 +39,12 @@ export class SearchComponent {
   }
 
   setLon(idx:number){
-    let longitude = this.data[idx].lat;
+    let longitude = this.data[idx].lon;
     sessionStorage.setItem("lon", String(longitude));
   }
+
+  hideResults(){
+    this.show_results = false;
+  }
+
 }

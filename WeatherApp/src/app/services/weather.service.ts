@@ -13,7 +13,7 @@ export class WeatherService {
   private forecastUrl = 'https://pro.openweathermap.org/data/2.5/forecast';
   private apiKey = '89836a59d86d39b9fc8e232f73d7c2ce';
 
-  constructor(private http: HttpClient, protected cityWeatherComponent: CityWeatherComponent) {
+  constructor(private http: HttpClient) {
 
   }
 
@@ -29,8 +29,5 @@ export class WeatherService {
     return this.http.get(`${this.forecastUrl}?lat=${lat}&lon=${lon}&appid=${this.apiKey}`)
   }
 
-  loadWeatherData(){
-    this.cityWeatherComponent.loadWeather();
-  }
 
 }
