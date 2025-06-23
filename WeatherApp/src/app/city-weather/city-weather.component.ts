@@ -1,10 +1,14 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {WeatherService} from '../services/weather.service';
 import { ActivatedRoute } from '@angular/router';
+import {NgClass} from '@angular/common';
+
 
 @Component({
   selector: 'app-city-weather',
-  imports: [],
+  imports: [
+    NgClass
+  ],
   templateUrl: './city-weather.component.html',
   styleUrl: './city-weather.component.css'
 })
@@ -32,6 +36,8 @@ export class CityWeatherComponent implements OnInit{
   protected fifth_day: any[] = [];
 
   protected forecast_num: number = 0;
+  protected forwardGrey: boolean = false;
+  protected backwardGrey: boolean = true;
 
 
   constructor(protected weatherService: WeatherService, private route: ActivatedRoute) {
@@ -100,6 +106,11 @@ export class CityWeatherComponent implements OnInit{
     });
   }
 
+  protected getWeatherIconByCode(iconCode: string){
+    return (`https://openweathermap.org/img/wn/${iconCode}@2x.png`);
+
+  }
+
   private calculateTime(dt: any, timezone: any){
     const utcDate = new Date(dt*1000);
     const localOffset = utcDate.getTimezoneOffset() * 60;
@@ -164,11 +175,23 @@ export class CityWeatherComponent implements OnInit{
   }
 
   increaseCounter(){
+    if(this.forecast_num < 5){
     this.forecast_num += 1;
+    this.backwardGrey = false;
+    }
+    else{
+      this.forwardGrey = true;
+    }
   }
 
   decreaseCounter(){
+    if(this.forecast_num > 0){
     this.forecast_num -= 1;
+    this.forwardGrey = false;
+    }
+    else{
+      this.backwardGrey = true;
+    }
   }
 
 }

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <div id="searchDiv">
   <div id="inputGroup">
     <input [(ngModel)]="search_value" #newInput id="cityInput" placeholder="Search for a city">
@@ -10,6 +12,9 @@
       <li id="cityResult">
         <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); this.hideResults();" >
           <p id="city">{{dataSet.name}} {{dataSet.state}}, {{dataSet.country}}</p>
+          <button class="star-button">
+            <i class="far fa-star">
+            </i></button>
         </a>
       </li>
     }

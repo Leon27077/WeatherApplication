@@ -4,3 +4,15 @@
   align-items: center;
   font-size: xx-large;
 }
+
+.forecast-button{
+  background-color:lightblue;
+}
+
+.forward-button{
+  background-color: grey;
+}
+
+.backward-button{
+  background-color: grey;
+}

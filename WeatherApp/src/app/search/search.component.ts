@@ -33,6 +33,10 @@ export class SearchComponent {
     })
   }
 
+  addToFavorites(lat:number, lon:number){
+    //
+  }
+
   setLat(idx:number){
     let latitude = this.data[idx].lat;
     sessionStorage.setItem("lat", String(latitude));

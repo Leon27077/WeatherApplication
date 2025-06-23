@@ -60,3 +60,11 @@
   font-size: 1.1rem;
 }
 
+.star-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: gold;
+  cursor: pointer;
+}
+

@@ -13,7 +13,8 @@
 
 @for (elem of getForecastByNumber(this.forecast_num); track elem){
   <p>{{elem[0]}} - {{elem[1]}} - {{elem[2]}}°C</p>
+  <img src="{{this.getWeatherIconByCode(elem[3])}}">
 
 }
-<button (click)="increaseCounter()">forward</button>
-<button (click)="decreaseCounter()">backward</button>
+<button class="forecast-button" [ngClass]="{'backward-button': this.backwardGrey}" (click)="decreaseCounter()">backward</button>
+<button class="forecast-button" [ngClass]="{'forward-button': this.forwardGrey}" (click)="increaseCounter()">forward</button>
