@@ -1,14 +1,15 @@
-<input [(ngModel)]="search_value" #newInput id="cityInput" placeholder="Search for a city">
-
-<button id="searchCityButton" (click)="search(newInput.value);">search</button>
-
+<div id="searchDiv">
+  <div id="inputGroup">
+    <input [(ngModel)]="search_value" #newInput id="cityInput" placeholder="Search for a city">
+    <button id="searchCityButton" (click)="search(newInput.value);">search</button>
+  </div>
+</div>
 @if (show_results){
   <ul id="cityResultsList">
     @for (dataSet of data; track dataSet){
       <li id="cityResult">
         <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); this.hideResults();" >
-          <p id="city">{{dataSet.name}}</p>
-          <p id="desc">{{dataSet.state}}, {{dataSet.country}}</p>
+          <p id="city">{{dataSet.name}} {{dataSet.state}}, {{dataSet.country}}</p>
         </a>
       </li>
     }
