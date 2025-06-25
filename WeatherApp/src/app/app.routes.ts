@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import {CityWeatherComponent} from './city-weather/city-weather.component';
+import {FavoriteComponent} from './favorite/favorite/favorite.component';
 
 export const routes: Routes = [
-  { path:'cityWeather/:name', component:CityWeatherComponent}
+  { path:'cityWeather/:name', component:CityWeatherComponent},
+  { path:'favourites', component:FavoriteComponent}
 ];

@@ -12,10 +12,10 @@
       <li id="cityResult">
         <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); this.hideResults();" >
           <p id="city">{{dataSet.name}} {{dataSet.state}}, {{dataSet.country}}</p>
-          <button class="star-button">
-            <i class="far fa-star">
-            </i></button>
         </a>
+        <button (click)="addToFavorites(dataSet.lat, dataSet.lon)" class="star-button">
+          <i [ngClass]="isFavourite(dataSet.lat, dataSet.lon) ? 'fas fa-star' : 'far fa-star'">
+          </i></button>
       </li>
     }
   </ul>

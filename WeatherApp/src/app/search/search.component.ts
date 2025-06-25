@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {WeatherService} from '../services/weather.service';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,8 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
     FormsModule,
     RouterLink,
     RouterOutlet,
-    RouterLinkActive
+    RouterLinkActive,
+    NgClass
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
@@ -33,8 +35,29 @@ export class SearchComponent {
     })
   }
 
+  isFavourite(lat:number, lon:number):boolean{
+    let list = JSON.parse(<string>localStorage.getItem("favs"));
+    if(list.find((e: [number,number]) => e[0] == lat && e[1] == lon)){
+      return true;
+    }
+    return false;
+  }
+
   addToFavorites(lat:number, lon:number){
-    //
+    let list = JSON.parse(<string>localStorage.getItem("favs"));
+    if(this.isFavourite(lat, lon)){
+      console.log("!")
+      list = list.filter(([x, y]:[number,number]) => !(x === lat && y === lon));
+      localStorage.setItem("favs", JSON.stringify(list));
+      console.log(JSON.parse(<string>localStorage.getItem("favs")));
+    }
+    else{
+    list.push([lat,lon]);
+    localStorage.setItem("favs", JSON.stringify(list));
+    console.log(JSON.parse(<string>localStorage.getItem("favs")));
+    }
+
+
   }
 
   setLat(idx:number){
