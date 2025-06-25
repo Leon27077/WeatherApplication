@@ -4,5 +4,5 @@ import {FavoriteComponent} from './favorite/favorite/favorite.component';
 
 export const routes: Routes = [
   { path:'cityWeather/:name', component:CityWeatherComponent},
-  { path:'favourites', component:FavoriteComponent}
+  { path:'favorites', component:FavoriteComponent}
 ];

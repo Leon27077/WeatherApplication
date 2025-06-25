@@ -10,7 +10,10 @@ import {SearchComponent} from './search/search.component';
 })
 export class App implements OnInit{
   ngOnInit(): void {
+      const storageItem = localStorage.getItem("favs");
+      if(!storageItem){
       localStorage.setItem("favs", JSON.stringify([]));
+      }
   }
   protected title = 'WeatherApp';
 

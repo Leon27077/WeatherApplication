@@ -1,3 +1,5 @@
+@for(dataSet of data; track dataSet){
+  <a (click)="setLat(dataSet[2][0]); setLon(dataSet[2][1]); goToCityWeather(dataSet[0])" >{{dataSet[0]}}, {{dataSet[1]}}</a>
+}
 
 
-<p>favorite works!</p>
