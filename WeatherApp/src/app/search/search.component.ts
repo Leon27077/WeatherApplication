@@ -43,7 +43,7 @@ export class SearchComponent {
     return false;
   }
 
-  addToFavorites(lat:number, lon:number){
+  addToFavourites(lat:number, lon:number){
     let list = JSON.parse(<string>localStorage.getItem("favs"));
     if(this.isFavourite(lat, lon)){
       console.log("!")

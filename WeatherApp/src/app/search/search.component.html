@@ -10,10 +10,10 @@
   <ul id="cityResultsList">
     @for (dataSet of data; track dataSet){
       <li id="cityResult">
-        <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); this.hideResults();" >
+        <a [routerLink]="['/cityWeather',dataSet.name]" routerLinkActive="active" (click)="setLat($index); setLon($index); this.hideResults(); this.weatherService.setShowFavourites(false)" >
           <p id="city">{{dataSet.name}} {{dataSet.state}}, {{dataSet.country}}</p>
         </a>
-        <button (click)="addToFavorites(dataSet.lat, dataSet.lon)" class="star-button">
+        <button (click)="addToFavourites(dataSet.lat, dataSet.lon)" class="star-button">
           <i [ngClass]="isFavourite(dataSet.lat, dataSet.lon) ? 'fas fa-star' : 'far fa-star'">
           </i></button>
       </li>

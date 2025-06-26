@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../../services/weather.service';
-import {Router, RouterLink} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
-  selector: 'app-favorite',
+  selector: 'app-favourite',
   imports: [
-    RouterLink
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './favorite.component.html',
-  styleUrl: './favorite.component.css'
+  styleUrl: './favourite.component.css'
 })
 export class FavoriteComponent implements OnInit{
   protected data: any[] = [];
@@ -26,12 +27,21 @@ export class FavoriteComponent implements OnInit{
         }
     }
 
+    removeFromFavourites(lat:number, lon:number){
+      let list = JSON.parse(<string>localStorage.getItem("favs"));
+      list = list.filter(([x, y]:[number,number]) => !(x === lat && y === lon));
+      localStorage.setItem("favs", JSON.stringify(list));
+      console.log(JSON.parse(<string>localStorage.getItem("favs")));
+      this.data = this.data.filter(([name, country, [x, y]]) => !(x === lat && y === lon));
+    }
+
+
     setLat(lat:number){
-    localStorage.setItem("lat", JSON.stringify(lat));
+    sessionStorage.setItem("lat", JSON.stringify(lat));
     }
 
     setLon(lon:number){
-    localStorage.setItem("lon", JSON.stringify(lon));
+    sessionStorage.setItem("lon", JSON.stringify(lon));
     }
 
   goToCityWeather(city:any) {

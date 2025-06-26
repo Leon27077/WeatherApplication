@@ -1,4 +1,6 @@
 
 <app-search></app-search>
-<a [routerLink]="['/favorites']" routerLinkActive="active">favorites</a>
+@if (showFavsComponent){
+  <app-favourite></app-favourite>
+}
 <router-outlet />

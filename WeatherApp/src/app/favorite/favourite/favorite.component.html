@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+@for(dataSet of data; track dataSet){
+  <p>
+    <a (click)="setLat(dataSet[2][0]); setLon(dataSet[2][1]); goToCityWeather(dataSet[0])" >{{dataSet[0]}}, {{dataSet[1]}}</a>
+    <button (click)="removeFromFavourites(dataSet[2][0], dataSet[2][1]);" class="star-button">
+      <i class="fas fa-star"></i>
+    </button>
+  </p>
+}
+
+

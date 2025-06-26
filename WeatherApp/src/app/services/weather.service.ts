@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {CityWeatherComponent} from '../city-weather/city-weather.component';
 
 @Injectable({
@@ -13,6 +13,14 @@ export class WeatherService {
   private forecastUrl = 'https://pro.openweathermap.org/data/2.5/forecast';
   private apiKey = '89836a59d86d39b9fc8e232f73d7c2ce';
 
+  private showFavouritesSubject = new BehaviorSubject<boolean>(true);
+
+  showFavourites$ = this.showFavouritesSubject.asObservable();
+
+  setShowFavourites(value: boolean) {
+    this.showFavouritesSubject.next(value);
+  }
+
   constructor(private http: HttpClient) {
 
   }
@@ -23,6 +31,7 @@ export class WeatherService {
 
   getWeatherByCoordinates(lat:number, lon:number) {
     return this.http.get(`${this.weatherUrl}?lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
+
   }
 
   getForecastByCoordinates(lat:number, lon:number){
