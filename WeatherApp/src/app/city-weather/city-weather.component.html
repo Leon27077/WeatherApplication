@@ -1,8 +1,16 @@
 <p id="city">{{city_name}}, {{country}}</p>
 
-<!-- Burger-Menü -->
 <div class="burger-container">
   <i class="fas fa-bars burger-icon" (click)="toggleMenu()"></i>
+</div>
+
+<div class="side-menu" [ngClass]="{ 'open': menuOpen }">
+  <div class="fav-header">
+    <h3>Favoriten</h3>
+    </div>
+  @if (menuOpen){
+  <app-favourite></app-favourite>
+  }
 </div>
 
 <div class="weather-details">
@@ -20,6 +28,15 @@
   </div>
 </div>
 
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-slide-toggle>slide</mat-slide-toggle>
+    </mat-toolbar>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
 
 <p class="forecast-title">5-Tage-Vorhersage</p>
 

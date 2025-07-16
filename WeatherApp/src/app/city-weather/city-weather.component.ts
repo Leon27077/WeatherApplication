@@ -2,12 +2,21 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {WeatherService} from '../services/weather.service';
 import { ActivatedRoute } from '@angular/router';
 import {NgClass} from '@angular/common';
-
+import {FavoriteComponent} from '../favorite/favourite/favorite.component';
+import {MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {MatToolbar} from '@angular/material/toolbar';
+import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-city-weather',
   imports: [
-    NgClass
+    NgClass,
+    FavoriteComponent,
+    MatSidenavContainer,
+    MatToolbar,
+    MatSlideToggle,
+    MatSlideToggleModule,
+    MatSidenavContent
   ],
   templateUrl: './city-weather.component.html',
   styleUrl: './city-weather.component.css'
@@ -200,4 +209,5 @@ export class CityWeatherComponent implements OnInit{
     this.menuOpen = !this.menuOpen;
   }
 
+  protected readonly WeatherService = WeatherService;
 }
