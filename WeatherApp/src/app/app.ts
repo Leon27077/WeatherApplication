@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SearchComponent, RouterLink, RouterLinkActive, FavoriteComponent, NgIf],
+  imports: [RouterOutlet, SearchComponent, FavoriteComponent],
   templateUrl: './app.html',
   standalone: true,
   styleUrl: './app.css'

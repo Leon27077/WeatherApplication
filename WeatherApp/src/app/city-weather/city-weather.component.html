@@ -1,20 +1,40 @@
-<p id="city">{{this.city_name}}, {{this.country}}</p>
-<p id="daytime">Daytime: {{this.getDt()}}</p>
-<p id="temperature">temperature: {{this.getTemp()}}</p>
-<p id="feels_like">feels like: {{this.getFeelsLike()}}</p>
-<p id="description">description: {{this.weather_description}}</p>
-<p id="humidity">humidity: {{this.humidity}}%</p>
-<p id="visibility">visibility: {{this.visibility}}</p>
-<p id="sunrise">sunrise: {{this.getSunrise()}}</p>
-<p id="sunset">sunset: {{this.getSunset()}}</p>
-<p id="wind_speed">wind speed: {{this.wind_speed}}</p>
+<p id="city">{{city_name}}, {{country}}</p>
 
-<p>----forecast-----</p>
+<!-- Burger-Menü -->
+<div class="burger-container">
+  <i class="fas fa-bars burger-icon" (click)="toggleMenu()"></i>
+</div>
 
-@for (elem of getForecastByNumber(this.forecast_num); track elem){
-  <p>{{elem[0]}} - {{elem[1]}} - {{elem[2]}}°C</p>
-  <img src="{{this.getWeatherIconByCode(elem[3])}}">
+<div class="weather-details">
+  <div class="weather-card highlight">
+    <p class="time">{{getDt()}}</p>
+    <p class="temperature">{{getTemp()}}°C</p>
+    <p class="description">{{weather_description}}</p>
+    <p class="feels">Feels like {{getFeelsLike()}}°C</p>
+    <hr />
+    <p>Humidity: {{humidity}}%</p>
+    <p>Visibility: {{visibility}} m</p>
+    <p>Sunrise: {{getSunrise()}}</p>
+    <p>Sunset: {{getSunset()}}</p>
+    <p>Wind Speed: {{wind_speed}} m/s</p>
+  </div>
+</div>
 
-}
-<button class="forecast-button" [ngClass]="{'backward-button': this.backwardGrey}" (click)="decreaseCounter()">backward</button>
-<button class="forecast-button" [ngClass]="{'forward-button': this.forwardGrey}" (click)="increaseCounter()">forward</button>
+
+<p class="forecast-title">5-Tage-Vorhersage</p>
+
+<div class="forecast-container">
+  @for (elem of getForecastByNumber(this.forecast_num); track elem) {
+    <div class="forecast-item">
+      <p>{{elem[0]}}</p>
+      <p>{{elem[1]}}</p>
+      <img src="{{this.getWeatherIconByCode(elem[3])}}">
+      <p><strong>{{elem[2]}}°C</strong></p>
+    </div>
+  }
+</div>
+
+<div class="forecast-buttons">
+  <button class="forecast-button" [ngClass]="{'backward-button': this.backwardGrey}" (click)="decreaseCounter()">Zurück</button>
+  <button class="forecast-button" [ngClass]="{'forward-button': this.forwardGrey}" (click)="increaseCounter()">Weiter</button>
+</div>

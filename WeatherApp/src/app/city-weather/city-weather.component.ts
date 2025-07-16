@@ -38,6 +38,7 @@ export class CityWeatherComponent implements OnInit{
   protected forecast_num: number = 0;
   protected forwardGrey: boolean = false;
   protected backwardGrey: boolean = true;
+  protected menuOpen: boolean = false;
 
 
   constructor(protected weatherService: WeatherService, private route: ActivatedRoute) {
@@ -73,6 +74,7 @@ export class CityWeatherComponent implements OnInit{
           this.weather_description = data.weather[0].description;
           this.wind_speed = data.wind.speed;
           console.log(data);
+          this.weatherService.setShowFavourites(false);
         }
       });
       this.forecast_num = 0;
@@ -192,6 +194,10 @@ export class CityWeatherComponent implements OnInit{
     else{
       this.backwardGrey = true;
     }
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
 }

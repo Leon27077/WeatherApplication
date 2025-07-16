@@ -1,18 +1,143 @@
-#city{
+#city {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 24px;
+  color: #333;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.weather-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.weather-card:hover {
+  transform: scale(1.02);
+}
+
+.weather-card p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.temperature {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2196f3;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.time {
+  font-size: 24px;
+  color: #444;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.description {
+  text-align: center;
+  font-size: 19px;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.feels {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.weather-card hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+.weather-card p:not(.temperature):not(.time):not(.description):not(.feels) {
+  font-size: 15px;
+  color: #777;
+  margin: 4px 0;
+}
+
+.forecast-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 21px;
+  margin-top: 32px;
+  color: #555;
+}
+
+.forecast-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: xx-large;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 20px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  scroll-snap-type: x mandatory;
 }
 
-.forecast-button{
-  background-color:lightblue;
+.forecast-item {
+  flex: 0 0 180px;
+  background-color: #e3f2fd;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.forward-button{
-  background-color: grey;
+.forecast-item img {
+  width: 60px;
+  height: 60px;
 }
 
-.backward-button{
-  background-color: grey;
+.forecast-item p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.forecast-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.forecast-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.forecast-button:hover {
+  background-color: #1976d2;
+}
+
+.forecast-button.forward-button,
+.forecast-button.backward-button {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }
