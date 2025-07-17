@@ -3,20 +3,13 @@ import {WeatherService} from '../services/weather.service';
 import { ActivatedRoute } from '@angular/router';
 import {NgClass} from '@angular/common';
 import {FavoriteComponent} from '../favorite/favourite/favorite.component';
-import {MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
-import {MatToolbar} from '@angular/material/toolbar';
-import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @Component({
   selector: 'app-city-weather',
   imports: [
     NgClass,
-    FavoriteComponent,
-    MatSidenavContainer,
-    MatToolbar,
-    MatSlideToggle,
-    MatSlideToggleModule,
-    MatSidenavContent
+    FavoriteComponent
   ],
   templateUrl: './city-weather.component.html',
   styleUrl: './city-weather.component.css'
