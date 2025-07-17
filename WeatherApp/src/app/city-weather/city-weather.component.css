@@ -8,7 +8,6 @@
 
 .weather-details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
   padding: 24px;
   max-width: 900px;
@@ -90,7 +89,7 @@
   padding: 20px 24px;
   max-width: 1000px;
   margin: 0 auto;
-  scroll-snap-type: x mandatory;
+
 }
 
 .forecast-item {
@@ -139,14 +138,14 @@
 .forecast-button.backward-button {
   background-color: #ccc;
   color: #666;
-  cursor: not-allowed;
+
 }
 
 .burger-container {
   position: absolute;
   top: 140px;
   left: 24px;
-  z-index: 1001;
+  z-index: 1;
 }
 
 .burger-icon {
